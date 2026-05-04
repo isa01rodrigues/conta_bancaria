@@ -3,7 +3,7 @@ package conta_bancaria.model;
 // não possui o main pois não se trata da classe principal do projeto.
 
 //
-public class Conta {
+public abstract class Conta {
 
 	// Criaçãod de atributos
 
@@ -102,6 +102,7 @@ public class Conta {
 		System.out.println("Agência: " + this.agencia);
 		System.out.println("Tipo da Conta: " + tipo);
 		System.out.println("Titular: " + this.titulo);
+		
 		System.out.printf("Saldo: R$ %.2f%n", this.saldo);
 	}
 	
