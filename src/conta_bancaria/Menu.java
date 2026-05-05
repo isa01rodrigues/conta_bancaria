@@ -1,5 +1,6 @@
 package conta_bancaria;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import conta_bancaria.model.Conta;
@@ -67,60 +68,75 @@ public class Menu {
 		
 		// Utilizamos o método nextInt() do objeto "leia", para ler a entrada do usuário como um número inteiro
 		// O valor digitado pelo usuário será armazenado na variável "opcao"		
-		opcao = leia.nextInt();
-		
-		//Verificar se o valor da variável opcao é igual a 0.
+		//try tenta executar um código que pode gerar erro
+		try {
+			opcao = leia.nextInt();
+			leia.nextLine();
+			
+		} //trata o erro caso o usuário digite algo que não seja número inteiro
+		catch (InputMismatchException e) {
+			opcao = -1;
+			System.out.println("\nDigite um número inteiro!");
+			leia.nextLine();
+		}
+
 		if (opcao == 0) {
 			System.out.println(Cores.TEXT_WHITE_BOLD + "\nBanco do Brazil com Z - O seu Futuro começa aqui!");
-			sobre(); // chama o método "sobre()" que utiliza void
-             leia.close(); 
-			System.exit(0);	//Encerra a execução do programa imediatamente
-			
-			
-			//Switc responsavel por dar uma opção de escolha para cada caso
-			switch (opcao) {
-			case 1:
-				System.out.println(Cores.TEXT_WHITE_BOLD +"Criar Conta\n\n");
-
-				break;
-			case 2:
-				System.out.println(Cores.TEXT_WHITE_BOLD +"Listar todas as Contas\n\n");
-
-				break;
-			case 3:
-				System.out.println(Cores.TEXT_WHITE_BOLD +"Consultar dados da Conta - por número\n\n");
-
-				break;
-			case 4:
-				System.out.println(Cores.TEXT_WHITE_BOLD +"Atualizar dados da Conta\n\n");
-
-				break;
-			case 5:
-				System.out.println(Cores.TEXT_WHITE_BOLD +"Apagar a Conta\n\n");
-
-				break;
-			case 6:
-				System.out.println(Cores.TEXT_WHITE_BOLD +"Saque\n\n");
-
-				break;
-			case 7:
-				System.out.println(Cores.TEXT_WHITE_BOLD +"Depósito\n\n");
-
-				break;
-			case 8:
-				System.out.println(Cores.TEXT_WHITE_BOLD +"Transferência entre Contas\n\n");
-
-				break;
-			default:
-				System.out.println(Cores.TEXT_RED_BOLD +"\nOpção Inválida!\n");
-				break;
-			}
-			
+			sobre();
+			leia.close();
+			System.exit(0);
 		}
-		
+
+		switch (opcao) {
+		case 1:
+			System.out.println(Cores.TEXT_WHITE + "Criar Conta\n\n");
+
+			keyPress();
+			break;
+		case 2:
+			System.out.println(Cores.TEXT_WHITE + "Listar todas as Contas\n\n");
+
+			keyPress();
+			break;
+		case 3:
+			System.out.println(Cores.TEXT_WHITE + "Consultar dados da Conta - por número\n\n");
+
+			keyPress();
+			break;
+		case 4:
+			System.out.println(Cores.TEXT_WHITE + "Atualizar dados da Conta\n\n");
+
+			keyPress();
+			break;
+		case 5:
+			System.out.println(Cores.TEXT_WHITE + "Apagar a Conta\n\n");
+
+			keyPress();
+			break;
+		case 6:
+			System.out.println(Cores.TEXT_WHITE + "Saque\n\n");
+
+			keyPress();
+			break;
+		case 7:
+			System.out.println(Cores.TEXT_WHITE + "Depósito\n\n");
+
+			keyPress();
+			break;
+		case 8:
+			System.out.println(Cores.TEXT_WHITE + "Transferência entre Contas\n\n");
+
+			keyPress();
+			break;
+		default:
+			System.out.println(Cores.TEXT_RED_BOLD + "\nOpção Inválida!\n" + Cores.TEXT_RESET);
+			keyPress();
+			break;
+		}
 	}
-	
 }
+	
+
 	//"void" indica que o método NÃO retorna nenhum valor.
 	// responsável por executar uma ação,
 	public static void sobre() {
@@ -130,7 +146,12 @@ public class Menu {
 		System.out.println("github.com/conteudoGeneration");
 		System.out.println("*********************************************************");
 		
-		
+	}
+	
+	
+	public static void keyPress() {
+		System.out.println(Cores.TEXT_RESET + "\n\nPressione Enter para Continuar...");
+		leia.nextLine();
 	}
 
 }

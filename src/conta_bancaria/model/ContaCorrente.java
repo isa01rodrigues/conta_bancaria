@@ -25,11 +25,11 @@ public class ContaCorrente extends Conta {
 	public boolean sacar(float valor) {
 		
 		// "this" → refere-se ao objeto atual
-	    // getSaldo() e getLimite() → métodos que retornam valores (provavelmente atributos privados) 
+	    // getSaldo() e getLimite() → métodos que retornam valores 
 		
 		if(this.getSaldo() + this.getLimite() < valor) {
 			System.out.println("\n Saldo Insuficiente!");
-			return false; // caso 
+			return false; 
 		}
 		
 		// getSaldo() → pega um valor
